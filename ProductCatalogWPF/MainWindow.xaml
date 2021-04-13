@@ -5,13 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProductCatalogWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="920"
+        Title="Product Catalog" Height="600" Width="920"
         MinWidth="920"
-        MinHeight="450">
+        MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        Background="WhiteSmoke">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="8*"/>
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0"></Grid>
@@ -23,10 +25,17 @@
                 <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
 
+            <Grid Grid.Column="0">
+
+            </Grid>
+
             <Grid Grid.Column="1">
                 <ListBox x:Name="ListBoxProducts"
                          ItemsSource="{Binding Products}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         Margin="0,0,0, 10"
+                         BorderThickness="0"
+                         Background="Transparent">
                     <ListBox.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel Orientation="Horizontal"/>
@@ -49,7 +58,7 @@
                                         <Image Source="{Binding ImagePath}"></Image>
                                     </Border>
                                 </Grid>
-                                
+
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="5*"/>
@@ -68,7 +77,12 @@
                                             Content="+"
                                             FontSize="25"
                                             VerticalAlignment="Center"
-                                            VerticalContentAlignment="Top"/>
+                                            VerticalContentAlignment="Top"
+                                            BorderThickness="0"
+                                            Background="#6CA9DA"
+                                            Click="ButtonAdd_OnClick"
+                                            IsEnabled="True">
+                                    </Button>
                                 </Grid>
                             </Grid>
                         </DataTemplate>
@@ -76,12 +90,86 @@
                 </ListBox>
             </Grid>
 
-            <Grid Grid.Column="1">
-
-            </Grid>
-
             <Grid Grid.Column="2">
+                <Border Margin="10, 0, 10, 10"
+                        BorderThickness="1.5"
+                        BorderBrush="Black">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3.5*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
+                        <Border Grid.Row="0"
+                                BorderThickness="1.5"
+                                Margin="10"
+                                BorderBrush="Black">
+                            <Image x:Name="ImageProduct"></Image>
+                        </Border>
+
+                        <StackPanel Grid.Row="1">
+                            <TextBlock FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Text="Name"
+                                       Margin="10, 0, 0, 0"/>
+                            <TextBox x:Name="TextBoxProductName"
+                                     Margin="10, 10, 10, 0"
+                                     Height="30"
+                                     Text="Cola"
+                                     FontSize="17"
+                                     VerticalContentAlignment="Center"
+                                     Padding="5, 0, 5, 0"/>
+                            <TextBlock FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Text="Quantity"
+                                       Margin="10, 10, 0, 0"/>
+                            <TextBox x:Name="TextBoxProductQuantity"
+                                     Margin="10, 10, 10, 0"
+                                     Height="30"
+                                     Text="10"
+                                     FontSize="17"
+                                     VerticalContentAlignment="Center"
+                                     Padding="5, 0, 5, 0"/>
+                            <TextBlock FontSize="16"
+                                       FontWeight="SemiBold"
+                                       Text="Price"
+                                       Margin="10, 10, 0, 0"/>
+                            <TextBox x:Name="TextBoxProductPrice"
+                                     Margin="10, 10, 10, 0"
+                                     Height="30"
+                                     Text="10"
+                                     FontSize="17"
+                                     VerticalContentAlignment="Center"
+                                     Padding="5, 0, 5, 0"/>
+                        </StackPanel>
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Button x:Name="ButtonUpdate"
+                                    Grid.Column="0"
+                                    Margin="10, 0, 5, 15"
+                                    Content="Update"
+                                    FontSize="18"
+                                    BorderThickness="0"
+                                    Background="#6CA9DA"
+                                    Click="ButtonUpdate_OnClick"/>
+
+                            <Button x:Name="ButtonDelete"
+                                    Grid.Column="1"
+                                    FontSize="18"
+                                    Content="Delete"
+                                    Margin="5, 0, 10, 15"
+                                    BorderThickness="0"
+                                    Background="#D9596C"
+                                    Click="ButtonDelete_OnClick"/>
+                        </Grid>
+                    </Grid>
+                </Border>
             </Grid>
         </Grid>
     </Grid>
