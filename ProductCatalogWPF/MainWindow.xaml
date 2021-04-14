@@ -12,11 +12,38 @@
         Background="WhiteSmoke">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0"></Grid>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    BorderThickness="2"
+                    BorderBrush="Black"
+                    Margin="15"
+                    CornerRadius="13"
+                    Padding="5">
+                <TextBox x:Name="TextBoxSearch"
+                         BorderThickness="0"
+                         Background="Transparent"
+                         TextChanged="TextBoxSearch_OnTextChanged"/>
+            </Border>
+        </Grid>
+
+        <Border Grid.Row="0"
+                BorderThickness="0, 0, 0, 1.5"
+                Margin="0, 0, 0, 5"
+                BorderBrush="Black"></Border>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -26,7 +53,16 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="7*"/>
+                </Grid.RowDefinitions>
 
+                <Viewbox Grid.Row="0"
+                         Stretch="Uniform">
+                    <Image Source="Images/buy_60px.png"
+                           RenderOptions.BitmapScalingMode="Fant"/>
+                </Viewbox>
             </Grid>
 
             <Grid Grid.Column="1">
@@ -104,8 +140,11 @@
                         <Border Grid.Row="0"
                                 BorderThickness="1.5"
                                 Margin="10"
-                                BorderBrush="Black">
-                            <Image x:Name="ImageProduct"></Image>
+                                BorderBrush="Black"
+                                Background="AliceBlue"
+                                MouseUp="UIElement_OnMouseUp">
+                            <Image x:Name="ImageProduct"
+                                   ></Image>
                         </Border>
 
                         <StackPanel Grid.Row="1">
@@ -116,7 +155,7 @@
                             <TextBox x:Name="TextBoxProductName"
                                      Margin="10, 10, 10, 0"
                                      Height="30"
-                                     Text="Cola"
+                                     Text=""
                                      FontSize="17"
                                      VerticalContentAlignment="Center"
                                      Padding="5, 0, 5, 0"/>
@@ -127,7 +166,7 @@
                             <TextBox x:Name="TextBoxProductQuantity"
                                      Margin="10, 10, 10, 0"
                                      Height="30"
-                                     Text="10"
+                                     Text=""
                                      FontSize="17"
                                      VerticalContentAlignment="Center"
                                      Padding="5, 0, 5, 0"/>
@@ -138,7 +177,7 @@
                             <TextBox x:Name="TextBoxProductPrice"
                                      Margin="10, 10, 10, 0"
                                      Height="30"
-                                     Text="10"
+                                     Text=""
                                      FontSize="17"
                                      VerticalContentAlignment="Center"
                                      Padding="5, 0, 5, 0"/>
