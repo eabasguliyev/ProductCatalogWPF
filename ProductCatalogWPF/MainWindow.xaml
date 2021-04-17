@@ -29,7 +29,7 @@
             <Border Grid.Column="1"
                     Grid.ColumnSpan="3"
                     BorderThickness="2"
-                    BorderBrush="Black"
+                    BorderBrush="#6CA9DA"
                     Margin="15"
                     CornerRadius="13"
                     Padding="5">
@@ -42,8 +42,7 @@
 
         <Border Grid.Row="0"
                 BorderThickness="0, 0, 0, 1.5"
-                Margin="0, 0, 0, 5"
-                BorderBrush="Black"></Border>
+                BorderBrush="LightGray"></Border>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -65,11 +64,15 @@
                 </Viewbox>
             </Grid>
 
+            <Border Grid.Column="0"
+                    BorderThickness="0, 0, 1.5, 0"
+                    BorderBrush="LightGray"/>
+
             <Grid Grid.Column="1">
                 <ListBox x:Name="ListBoxProducts"
                          ItemsSource="{Binding Products}"
                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                         Margin="0,0,0, 10"
+                         Margin="0,5,0, 10"
                          BorderThickness="0"
                          Background="Transparent">
                     <ListBox.ItemsPanel>
@@ -127,9 +130,9 @@
             </Grid>
 
             <Grid Grid.Column="2">
-                <Border Margin="10, 0, 10, 10"
+                <Border Margin="10, 5, 10, 10"
                         BorderThickness="1.5"
-                        BorderBrush="Black">
+                        BorderBrush="LightGray">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="3*"/>
@@ -140,7 +143,7 @@
                         <Border Grid.Row="0"
                                 BorderThickness="1.5"
                                 Margin="10"
-                                BorderBrush="Black"
+                                BorderBrush="LightGray"
                                 Background="AliceBlue"
                                 MouseUp="UIElement_OnMouseUp">
                             <Image x:Name="ImageProduct"

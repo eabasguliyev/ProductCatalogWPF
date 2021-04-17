@@ -96,7 +96,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\Baltika.png" />
+    <Resource Include="Images\Bizon.jpg" />
+    <Resource Include="Images\Cola.png" />
+    <Resource Include="Images\Hell.png" />
+    <Resource Include="Images\Lays.png" />
+    <Resource Include="Images\Pepsi.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\buy_60px.png" />
   </ItemGroup>

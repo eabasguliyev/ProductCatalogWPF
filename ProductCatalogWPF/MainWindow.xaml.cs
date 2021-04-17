@@ -34,37 +34,42 @@ namespace ProductCatalogWPF
                     Name = "Cola",
                     Price = 2,
                     Quantity = 120,
-                    ImagePath = "Images/buy_60px.png"
+                    ImagePath = "Images/Cola.png",
                 },
                 new Product()
                 {
                     Name = "Pepsi",
                     Price = 5,
                     Quantity = 200,
+                    ImagePath = "Images/Pepsi.png",
                 },
                 new Product()
                 {
-                    Name = "Cips",
+                    Name = "Lays",
                     Price = 1,
                     Quantity = 50,
+                    ImagePath = "Images/Lays.png",
                 },
                 new Product()
                 {
                     Name = "Bizon",
                     Price = 1.2,
                     Quantity = 400,
+                    ImagePath = "Images/Bizon.jpg",
                 },
                 new Product()
                 {
                     Name = "Hell",
                     Price = 2,
                     Quantity = 600,
+                    ImagePath = "Images/Hell.png",
                 },
                 new Product()
                 {
-                    Name = "Beer",
+                    Name = "Baltika 9",
                     Price = 5,
                     Quantity = 350,
+                    ImagePath = "Images/Baltika.png",
                 },
             };
 
@@ -88,6 +93,11 @@ namespace ProductCatalogWPF
             {
                 ImageProduct.Source = new BitmapImage(new Uri(item.ImagePath, UriKind.RelativeOrAbsolute));
             }
+            else
+            {
+                ImageProduct.Source = null;
+            }
+
             TextBoxProductName.Text = item.Name;
             TextBoxProductPrice.Text = item.Price.ToString("F");
             TextBoxProductQuantity.Text = item.Quantity.ToString();
@@ -97,6 +107,9 @@ namespace ProductCatalogWPF
         {
             if (_selectedProduct == null)
                 return;
+
+            if (ImageProduct.Source != null)
+                _selectedProduct.ImagePath = ImageProduct.Source.ToString();
 
             _selectedProduct.Name = TextBoxProductName.Text;
             _selectedProduct.Price= Convert.ToDouble(TextBoxProductPrice.Text);
@@ -139,7 +152,7 @@ namespace ProductCatalogWPF
         {
             keyword = keyword.ToLower();
 
-            return Products.Where(p => p.Name.ToLower().Contains(keyword)).ToList();
+            return _mainProducts.Where(p => p.Name.ToLower().Contains(keyword)).ToList();
         }
 
         private void UIElement_OnMouseUp(object sender, MouseButtonEventArgs e)
@@ -154,20 +167,16 @@ namespace ProductCatalogWPF
 
             var image = new BitmapImage(new Uri(open.FileName));
 
-            var fileName = $"{Guid.NewGuid()}.png";
+            var fileName = $@"Images/{Guid.NewGuid()}.png";
 
-            //IResourceWriter writer = new ResourceWriter("my.resources");
-            //writer.AddResource($"{fileName}", image);
-            //writer.Close();
+            if (!Directory.Exists("Images"))
+                Directory.CreateDirectory("Images");
 
-            //if (!Directory.Exists("Images"))
-            //    Directory.CreateDirectory("Images");
+            image.Save(fileName);
 
-            //image.Save(fileName);
-
-            _selectedProduct.ImagePath = $"pack://application:,,,/MyAssemblyName;component/resources/images/{fileName}";
-
-            ShowProductData(_selectedProduct);
+            var fullFileName = Directory.GetCurrentDirectory() + "\\" + fileName;
+            
+            ImageProduct.Source = new BitmapImage(new Uri(fullFileName));
         }
     }
 }
